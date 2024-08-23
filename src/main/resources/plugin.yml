@@ -1,0 +1,5 @@
+name: CityBuilderPlugin
+version: '1.0'
+main: jefry.plugin.cityBuilderPlugin.CityBuilderPlugin
+api-version: '1.21'
+depend: [Vault]
