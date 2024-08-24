@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 public class PlayerInteractListener implements Listener {
-
     private final Map<String, List<BuildingType>> buildingPages = new HashMap<>();
     private final Map<Player, Integer> playerPage = new HashMap<>();
 
