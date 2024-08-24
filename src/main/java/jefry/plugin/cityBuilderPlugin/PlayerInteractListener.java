@@ -81,7 +81,7 @@ public class PlayerInteractListener implements Listener {
         updateHotbar(player, currentPage);
     }
 
-    void updateHotbar(Player player, int page) {
+    public void updateHotbar(Player player, int page) {
         List<BuildingType> buildings = buildingPages.get("page" + page);
         player.getInventory().clear();
 
