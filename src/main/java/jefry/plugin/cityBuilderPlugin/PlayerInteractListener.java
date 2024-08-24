@@ -1,6 +1,6 @@
 package jefry.plugin.cityBuilderPlugin;
 
-import org.bukkit.Bukkit;
+import jefry.plugin.cityBuilderPlugin.libraries.ItemStackPlus;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -9,7 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,28 +86,20 @@ public class PlayerInteractListener implements Listener {
         // Add buildings/roads to hotbar
         for (int i = 0; i < buildings.size(); i++) {
             BuildingType building = buildings.get(i);
-            ItemStack item = new ItemStack(building.getIcon());
-            ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(ChatColor.YELLOW + building.getName());
-            List<String> lore = new ArrayList<>();
-            lore.add(ChatColor.GREEN + "Cost: $" + building.getCost());
-            meta.setLore(lore);
-            item.setItemMeta(meta);
-            player.getInventory().setItem(i + 1, item);
+            ItemStackPlus item = new ItemStackPlus(building.getIcon());
+            item.setName(ChatColor.YELLOW + building.getName());
+            item.addLore(ChatColor.GREEN + "Cost: $" + building.getCost());
+            player.getInventory().setItem(i + 1, item.getItem());
         }
 
         // Add navigation items
-        ItemStack backItem = new ItemStack(Material.ARROW);
-        ItemMeta backMeta = backItem.getItemMeta();
-        backMeta.setDisplayName(ChatColor.RED + "Back");
-        backItem.setItemMeta(backMeta);
-        player.getInventory().setItem(0, backItem);
+        ItemStackPlus backItem = new ItemStackPlus(Material.ARROW);
+        backItem.setName(ChatColor.RED + "Back");
+        player.getInventory().setItem(0, backItem.getItem());
 
-        ItemStack nextItem = new ItemStack(Material.ARROW);
-        ItemMeta nextMeta = nextItem.getItemMeta();
-        nextMeta.setDisplayName(ChatColor.GREEN + "Next");
-        nextItem.setItemMeta(nextMeta);
-        player.getInventory().setItem(8, nextItem);
+        ItemStackPlus nextItem = new ItemStackPlus(Material.ARROW);
+        nextItem.setName(ChatColor.GREEN + "Next");
+        player.getInventory().setItem(8, nextItem.getItem());
 
         player.sendMessage(ChatColor.AQUA + "Page " + page + " of " + buildingPages.size());
     }
