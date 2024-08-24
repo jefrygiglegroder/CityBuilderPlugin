@@ -11,7 +11,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CityBuilderPlugin extends JavaPlugin implements Listener {
-
     private static Economy economy = null;
 
     @Override
