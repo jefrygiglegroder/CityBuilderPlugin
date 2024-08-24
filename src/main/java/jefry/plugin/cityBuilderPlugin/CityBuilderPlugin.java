@@ -1,29 +1,29 @@
 package jefry.plugin.cityBuilderPlugin;
 
+import lombok.Getter;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CityBuilderPlugin extends JavaPlugin implements Listener {
-
+    @Getter
     private static Economy economy = null;
+
+    public static Plugin plugin;
 
     @Override
     public void onEnable() {
+        plugin = this;
+
         if (!setupEconomy()) {
             getLogger().severe("Disabled due to no Vault dependency found!");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
-        getServer().getPluginManager().registerEvents(new PlayerInteractListener(), this);
-        getLogger().info("CityBuilder plugin enabled!");
+        getServer().getPluginManager().registerEvents(new PlayerInteractListener(), plugin);
     }
 
     private boolean setupEconomy() {
@@ -31,12 +31,10 @@ public class CityBuilderPlugin extends JavaPlugin implements Listener {
         if (rsp == null) {
             return false;
         }
-        economy = rsp.getProvider();
-        return economy != null;
-    }
 
-    public static Economy getEconomy() {
-        return economy;
+        economy = rsp.getProvider();
+
+        return true;
     }
 
     @Override
