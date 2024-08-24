@@ -10,10 +10,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static jefry.plugin.cityBuilderPlugin.libraries.ColorUtils.colorify;
 
 public class PlayerInteractListener implements Listener {
     private final Map<String, List<BuildingType>> buildingPages = new HashMap<>();
@@ -60,8 +63,7 @@ public class PlayerInteractListener implements Listener {
                     CityBuilderPlugin.getEconomy().withdrawPlayer(player, cost);
                     Location loc = player.getLocation();
                     loc.getBlock().setType(selectedBuilding.getIcon()); // Simple building placement
-                    player.sendMessage(ChatColor.GREEN + selectedBuilding.getName() + " built for $" + cost + "!");
-                } else {
+                    player.sendMessage(colorify("&a") + selectedBuilding.getName() + " built for $" + cost + "!");                } else {
                     player.sendMessage(ChatColor.RED + "You don't have enough money!");
                 }
                 event.setCancelled(true);
@@ -87,7 +89,7 @@ public class PlayerInteractListener implements Listener {
         for (int i = 0; i < buildings.size(); i++) {
             BuildingType building = buildings.get(i);
             ItemStackPlus item = new ItemStackPlus(building.getIcon());
-            item.setName(ChatColor.YELLOW + building.getName());
+            item.setName(colorify("&e") + building.getName());
             item.addLore(ChatColor.GREEN + "Cost: $" + building.getCost());
             player.getInventory().setItem(i + 1, item.getItem());
         }

@@ -8,7 +8,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CityBuilderPlugin extends JavaPlugin implements Listener {
-    @Getter
+
     private static Economy economy = null;
 
     public static Plugin plugin;
@@ -40,5 +40,8 @@ public class CityBuilderPlugin extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         getLogger().info("CityBuilder plugin disabled!");
+    }
+    public static Economy getEconomy() {
+        return economy;
     }
 }

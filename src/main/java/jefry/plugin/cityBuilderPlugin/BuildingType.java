@@ -1,9 +1,7 @@
 package jefry.plugin.cityBuilderPlugin;
 
-import lombok.Getter;
 import org.bukkit.Material;
 
-@Getter
 public class BuildingType {
     private final String name;
     private final Material icon;
@@ -13,5 +11,17 @@ public class BuildingType {
         this.name = name;
         this.icon = icon;
         this.cost = cost;
+    }
+
+    public double getCost() {
+        return 0;
+    }
+
+    public Material getIcon() {
+        return null;
+    }
+
+    public Object getName() {
+        return null;
     }
 }

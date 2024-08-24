@@ -1,7 +1,5 @@
 package jefry.plugin.cityBuilderPlugin.libraries;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -21,8 +19,6 @@ import java.util.Set;
 
 @SuppressWarnings("unused")
 public class ItemStackPlus {
-    @Getter
-    @Setter
     ItemStack item;
 
     /* UTILS */
@@ -82,6 +78,10 @@ public class ItemStackPlus {
 
     public ItemStackPlus(ItemStackPlus itemStackPlus) {
         item = itemStackPlus.getItem();
+    }
+
+    public ItemStack getItem() {
+        return item;
     }
 
     /* INTERNAL */
