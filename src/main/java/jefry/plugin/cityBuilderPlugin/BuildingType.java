@@ -13,15 +13,15 @@ public class BuildingType {
         this.cost = cost;
     }
 
-    public double getCost() {
-        return 0;
+    public Object getName() {
+        return name;
     }
 
     public Material getIcon() {
-        return null;
+        return icon;
     }
 
-    public Object getName() {
-        return null;
+    public double getCost() {
+        return cost;
     }
 }
