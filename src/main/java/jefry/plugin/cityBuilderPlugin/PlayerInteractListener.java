@@ -42,7 +42,6 @@ public class PlayerInteractListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
-
         if (item == null) return;
 
         if (item.getType() == Material.ARROW) {
@@ -115,6 +114,7 @@ public class PlayerInteractListener implements Listener {
                 return building;
             }
         }
+
         return null;
     }
 }

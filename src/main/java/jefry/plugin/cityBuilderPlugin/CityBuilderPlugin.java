@@ -1,6 +1,5 @@
 package jefry.plugin.cityBuilderPlugin;
 
-import lombok.Getter;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -8,9 +7,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CityBuilderPlugin extends JavaPlugin implements Listener {
-
     private static Economy economy = null;
-
     public static Plugin plugin;
 
     @Override
@@ -26,6 +23,11 @@ public class CityBuilderPlugin extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new PlayerInteractListener(), plugin);
     }
 
+    @Override
+    public void onDisable() {
+        getLogger().info("CityBuilder plugin disabled!");
+    }
+
     private boolean setupEconomy() {
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
@@ -37,10 +39,6 @@ public class CityBuilderPlugin extends JavaPlugin implements Listener {
         return true;
     }
 
-    @Override
-    public void onDisable() {
-        getLogger().info("CityBuilder plugin disabled!");
-    }
     public static Economy getEconomy() {
         return economy;
     }
